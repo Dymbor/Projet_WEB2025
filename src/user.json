@@ -1,0 +1,22 @@
+{
+    "Thaen":{
+        "nom":"Ethan",
+        "mdp":"mdpEthan",
+        "admin":true
+    },
+    "Ed":{
+        "nom":"Gwen",
+        "mdp":"mdpGwen",
+        "admin":true
+    },
+    "Scoubyx":{
+        "nom":"Doryan",
+        "mdp":"mdpDoryan",
+        "admin":true
+    },
+    "Test":{
+        "nom":"Test",
+        "mdp":"azerty",
+        "admin":false
+    }
+}
