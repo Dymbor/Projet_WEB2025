@@ -1,0 +1,24 @@
+.Acceuil{
+    background-color:#D5D0CD ;
+    overflow: hidden;
+}
+
+.Article{
+    display: flex;
+    margin-top :5%;
+    margin-bottom: 5%;
+}
+
+.clothes {
+    width:100%;
+    border-radius: 10%;
+    margin-left: 2%;
+    border-color:#5E574D;
+    border-bottom-width: 100px;
+    border-right-width: 100px;
+}
+
+.text{
+    margin-left: 2%;
+    margin-right: 2%;
+}
