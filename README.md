@@ -9,3 +9,11 @@ https://yncrea-my.sharepoint.com/:w:/g/personal/ethan_fontaine_isen_yncrea_fr/Ef
 
 # Diagramme de Gant
 https://1drv.ms/x/c/443525efde2adbbf/EZBDeCgiNR9IvcsxvIdh1LUBxEThRAA_Xj5BP0wAU7vOjA?e=fRjnuV
+
+# Installation
+Avant de pouvoir lancer le site il vous faut exéctuer plusieur commande:
+* ```npm i -D react-router-dom```
+* ```npm i -D react-router-dom@latest```
+* ```npm install```
+Une fois ses trois commande exéctué vous êtes prêt a lancer le site:
+* ```npm start```
