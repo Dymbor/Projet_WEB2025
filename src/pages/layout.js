@@ -7,10 +7,10 @@ const Layout = () => {
     <>
     <div className="Layout">
             <header className="All-header">
-                <a className="Alisen-logo" href='/'><img src={logo} alt="logo" /></a>
+                <a className="Alisen-logo" to='/'><img src={logo} alt="logo" /></a>
                 <div className='list-link'>
-                    <Link to="/">Home</Link>
-                    <Link to="/">Achat</Link>
+                    <Link to='/'>Home</Link>
+                    <Link to='/articles'>Achat</Link>
                     <Link to="/">Panier</Link>
                     <Link to="/">Se connecter</Link>
                 </div>
@@ -21,7 +21,7 @@ const Layout = () => {
             <div className='list'>
                 <p>Nos conditions générales</p>
                 <p>Mentions légales</p>
-                <p>Conditions des offres et promotions</p>
+                <p>Conditions des offres <br></br> et promotions</p>
                 <p>Politique de confidentialité</p>
                 <p>Gérer mes préférences</p>
                 <p>Information marketplace</p>

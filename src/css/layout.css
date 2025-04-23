@@ -21,8 +21,9 @@ header {
     justify-content: center;
 }
 
-.link {
-    margin-right: 20%;
+.list-link> a {
+    margin-right: 5%;
+    margin-left: 5%;
     text-decoration: none;
     color:#F8F4E3;
     white-space: nowrap;
@@ -43,6 +44,7 @@ header {
 
 .list{
     display: flex;
+    align-items: center;
 }
 
 .list>p {
