@@ -1,0 +1,9 @@
+.Articles{
+    background-color:#D5D0CD ;
+    overflow: hidden;
+    display: flex;
+}
+
+.card{
+    width: 18rem;
+}
