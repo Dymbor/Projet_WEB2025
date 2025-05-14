@@ -30,7 +30,7 @@ puis dans un nouveau terminal déplacer vous vers le dossier Backend
 Le serveur express est la pour faire la liaison entre react et le JSON pour pouvoir se connecter ajouter des articles etc...
 
 ### Fonctionnement
-Une fois démarrer le serveur est en écoute sur les adresse codé dans ```serveur.js``` 
+Une fois démarrer le serveur est en écoute sur les adresses codés dans ```serveur.js``` 
 Par exemple lorsqu'une requête est envoyé sur ```/connection``` le serveur renvoie sous la forme de JSON le fichier ```User.js```. 
 Pour ce faire on vas chercher le fichier grâce à:
 ```js
