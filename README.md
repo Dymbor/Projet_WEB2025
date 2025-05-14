@@ -51,10 +51,10 @@ Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
         "admin":true // False
     },
 }
+```
 
 Pseudo: nom sous le quel l'utilisateur sera affiché
 nom: chaine de caractère nom qui permet à l'utilisateur de se connecter
 mail: chaine de caractère adresse mail de l'utilisateur
 mdp: chaine de caractère mot de passe de l'utilisateur
 admin: booléen qui permet de connaitre les privilège de l'utilisateur
-```
