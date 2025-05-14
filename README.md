@@ -17,3 +17,44 @@ Avant de pouvoir lancer le site il vous faut exéctuer plusieur commande:
 * ```npm install```
 Une fois ses trois commande exéctué vous êtes prêt a lancer le site:
 * ```npm start```
+puis dans un nouveau terminal déplacer vous vers le dossier Backend (```cd Backend```)
+* ```node serveur.js```
+
+# Explication
+
+## Serveur express
+### Utilité
+Le serveur express est la pour faire la liaison entre react et le JSON pour pouvoir se connecter ajouter des articles etc...
+
+### Fonctionnement
+Une fois démarrer le serveur est en écoute sur les adresse codé dans ```serveur.js``` 
+Par exemple lorsqu'une requête est envoyé sur ```/connection``` le serveur renvoie sous la forme de JSON le fichier ```User.js```. 
+Pour ce faire on vas chercher le fichier grâce à:
+```js
+fs.readFile("Destination", "utf8", (err, data))
+```
+A ce moment, si le serveur rencontre un problème en voulant récupérer le fichier une erreur est renvoyé et afficher dans la console, sinon une constante récupere le fichier (sous forme de texte) et est converti en JSON puis renvoyer par le serveur.
+
+### Liste actuelle des accès au serveur
+```/``` : chemin par défaut, envoie juste le texte "Bienvenue sur le serveur backend
+```/connection``` : renvoie la liste d'utilisateur en JSON
+
+## JSON 
+### User.json
+Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
+```JSON
+{
+    "Pseudo":{
+        "nom":"nom",
+        "mail":"adrresse@mail.utilisateur",
+        "mdp":"motDePasse",
+        "admin":true // False
+    },
+}
+
+Pseudo: nom sous le quel l'utilisateur sera affiché
+nom: chaine de caractère nom qui permet à l'utilisateur de se connecter
+mail: chaine de caractère adresse mail de l'utilisateur
+mdp: chaine de caractère mot de passe de l'utilisateur
+admin: booléen qui permet de connaitre les privilège de l'utilisateur
+```
