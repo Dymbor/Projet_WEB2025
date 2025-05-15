@@ -1,5 +1,8 @@
 # Projet_WEB2025
-Projet de webdev de S2 
+Bievenue sur Alisen, projet de première année de:
+- Gwennaëlle Airo-Farulla (github: https://github.com/Edwin659)
+- Ethan Fontaine (github: https://github.com/Dymbor)
+- Doryan Lecoadou (github: https://github.com/Scoubyx)
 
 # Figma
 https://www.figma.com/design/aXInCeNVQ5t4znS2dLEhWc/Untitled?node-id=0-1&t=aHxBtYPU4KcCl8Ks-1
