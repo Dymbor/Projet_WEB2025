@@ -43,7 +43,16 @@ const Variable= JSON.parse(data);
 
 ### Liste actuelle des accès au serveur
 * ```/``` : chemin par défaut, envoie juste le texte "Bienvenue sur le serveur backend
-* ```/connection``` : renvoie la liste d'utilisateur en JSON
+* ```/connection?username=...&password=...``` : renvoie une tentative de connection à l'utilisateur 'username' et renvoie un code, suivi du fichier JSON de l'utilisateur s'il existe et que le mot de passe est correct
+
+### Code de réponse du serveur
+- `500` : Echec de lecture du fichier
+- `404` : Utilisateur inconnue
+- `401` : Mot de passe incorrect
+- `200` : Connection réussi
+
+Dans le cas de l'envoie d'un code `200` le serveur enverra aussi sous forme de JSON le fichier demander
+
 
 ## JSON 
 ### User.json
@@ -54,7 +63,7 @@ Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
         "nom":"nom",
         "mail":"adrresse@mail.utilisateur",
         "mdp":"motDePasse",
-        "admin":true // False
+        "admin":true // False 
     },
 }
 ```
@@ -64,3 +73,7 @@ Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
 * mail: chaine de caractère adresse mail de l'utilisateur
 * mdp: chaine de caractère mot de passe de l'utilisateur
 * admin: booléen qui permet de connaitre les privilège de l'utilisateur
+
+## Module
+
+### Inscription.js
