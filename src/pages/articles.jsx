@@ -12,7 +12,7 @@ const Articles = () => {
 
   const deleteItem = (id) => {
     const newItems = items.filter((item) => item.id !== id);
-    
+
     setItems(newItems);
   };
 
@@ -33,6 +33,7 @@ const Articles = () => {
             <h2>{item.price}€</h2>
             <p>{item.description}</p>
             <button onClick={()=> navigate(`/produit/${item.name}`)}>Voir plus</button>
+            <button>Acheter</button>
             </div>
         </div>
       ))}

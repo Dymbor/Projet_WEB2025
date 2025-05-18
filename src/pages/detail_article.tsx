@@ -26,6 +26,7 @@ function Detail() {
         <h1>{name}</h1>
         <h3>{item.price}€</h3>
         <p>{item.description}</p>
+        <button>Acheter</button>
         <button onClick={()=> navigate(`/articles`)}>Retourner à la page article</button>
       </div>
     </div>
