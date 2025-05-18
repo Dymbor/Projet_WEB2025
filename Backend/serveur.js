@@ -18,8 +18,15 @@ app.get("/", (req, res) => {
   res.send("Bienvenue sur le serveur backend !");
 });
 
-app.get("/bouh", (req, res) => {
-  res.send("<h1>Bouh</h1>");
+app.get("/articles", (req, res) => {
+  fs.readFile("../src/JSON/list_articles.json", "utf8", (err, data) => {
+    if (err) {
+      console.error("Erreur lors de la lecture de 'articles.json' :",err);
+      return;
+    }
+    const Articles= JSON.parse(data);
+    res.send(Articles);
+  });
 });
 
 
