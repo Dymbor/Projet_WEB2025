@@ -77,6 +77,27 @@ Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
 * mdp: chaine de caractère mot de passe de l'utilisateur
 * admin: booléen qui permet de connaitre les privilège de l'utilisateur
 
+### list_articles.json
+Fichier JSON qui contient la liste de tout les articles du site sous la forme
+```JSON
+[
+ {
+      "id":"number",
+      "img":"images/name.png",
+      "name": "name",
+      "description": "Description",
+      "price": number
+      
+    }
+]
+```
+
+* id: Identifiant de l'articles
+* img: lien public de l'images de l'articles
+* name: chaine de caractère du nom
+* description: chaine de caractère description de l'article
+* price: nombre pour le prx
+
 ## Module
 
 ### Inscription.js
