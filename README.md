@@ -1,5 +1,8 @@
 # Projet_WEB2025
-Projet de webdev de S2 
+Bievenue sur Alisen, projet de première année de:
+- Gwennaëlle Airo-Farulla (github: https://github.com/Edwin659)
+- Ethan Fontaine (github: https://github.com/Dymbor)
+- Doryan Lecoadou (github: https://github.com/Scoubyx)
 
 # Figma
 https://www.figma.com/design/aXInCeNVQ5t4znS2dLEhWc/Untitled?node-id=0-1&t=aHxBtYPU4KcCl8Ks-1
@@ -43,7 +46,16 @@ const Variable= JSON.parse(data);
 
 ### Liste actuelle des accès au serveur
 * ```/``` : chemin par défaut, envoie juste le texte "Bienvenue sur le serveur backend
-* ```/connection``` : renvoie la liste d'utilisateur en JSON
+* ```/connection?username=...&password=...``` : renvoie une tentative de connection à l'utilisateur 'username' et renvoie un code, suivi du fichier JSON de l'utilisateur s'il existe et que le mot de passe est correct
+
+### Code de réponse du serveur
+- `500` : Echec de lecture du fichier
+- `404` : Utilisateur inconnue
+- `401` : Mot de passe incorrect
+- `200` : Connection réussi
+
+Dans le cas de l'envoie d'un code `200` le serveur enverra aussi sous forme de JSON le fichier demander
+
 
 ## JSON 
 ### User.json
@@ -54,7 +66,7 @@ Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
         "nom":"nom",
         "mail":"adrresse@mail.utilisateur",
         "mdp":"motDePasse",
-        "admin":true // False
+        "admin":true // False 
     },
 }
 ```
@@ -64,3 +76,28 @@ Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
 * mail: chaine de caractère adresse mail de l'utilisateur
 * mdp: chaine de caractère mot de passe de l'utilisateur
 * admin: booléen qui permet de connaitre les privilège de l'utilisateur
+
+### list_articles.json
+Fichier JSON qui contient la liste de tout les articles du site sous la forme
+```JSON
+[
+ {
+      "id":"number",
+      "img":"images/name.png",
+      "name": "name",
+      "description": "Description",
+      "price": number
+      
+    }
+]
+```
+
+* id: Identifiant de l'articles
+* img: lien public de l'images de l'articles
+* name: chaine de caractère du nom
+* description: chaine de caractère description de l'article
+* price: nombre pour le prx
+
+## Module
+
+### Inscription.js
