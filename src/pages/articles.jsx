@@ -7,19 +7,24 @@ const Articles = () => {
   const [items, setItems]=useState([]);
 
   useEffect(()=> {
-    setItems(data);
+    fetch('http://localhost:3001/articles.json')
+      .then(res => res.json())
+      .then(data => setItems(data));
   },[]);
 
-  const deleteItem = (id) => {
-    const newItems = items.filter((item) => item.id !== id);
+  const supprimerProduit = async (id) => {
+  try {
+    const res = await fetch(`http://localhost:3001/suppression/${id}`, {
+      method: 'DELETE',
+    });
 
-    setItems(newItems);
-  };
-
-  const addItem = () => {
-    const newItem = { id: items.length + 1, name: `Item ${items.length + 1}` };
-    setItems([...items, newItem]);
-  };
+    const data = await res.json();
+    console.log(data.message);
+    setItems((prev)=> prev.filter((p)=> p.id !==id));
+  } catch (error) {
+    console.error("Erreur :", error);
+  }
+};
 
   const navigate=useNavigate();
 
@@ -34,11 +39,10 @@ const Articles = () => {
             <p>{item.description}</p>
             <button onClick={()=> navigate(`/produit/${item.name}`)}>Voir plus</button>
             <button>Acheter</button>
+            <button onClick={() => supprimerProduit(item.id)}>Supprimer</button>
             </div>
         </div>
       ))}
-      {/* <button onClick={() => deleteItem(item.id)}>Delete</button>
-      <button onClick={addItem}>Add Item</button> */}
     </div>
 );
 }
