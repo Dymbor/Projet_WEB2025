@@ -1,0 +1,12 @@
+.erreur{
+    text-align: center;
+    background-color:#D5D0CD ;
+    overflow: hidden;
+}
+
+.detail{
+    background-color:#D5D0CD ;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}

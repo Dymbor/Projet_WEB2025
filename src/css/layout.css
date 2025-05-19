@@ -29,11 +29,6 @@ header {
     white-space: nowrap;
 } 
 
-/* Responsive */
-@media screen and (max-width:800px) {
-
-}
-
 .Footer {
     background-color:#5E574D ;
     color: #F8F4E3;

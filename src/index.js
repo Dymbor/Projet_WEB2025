@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/layout";
 import Home from "./pages/accueil";
 import Articles from "./pages/articles";
+import Detail from "./pages/detail_article.tsx";
 // import Panier from "./pages/Panier";
 // import Connexion from "./pages/Connexion";
 import './css/index.css';
@@ -13,10 +14,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {<Route path="/articles" element={<Articles />} />
-          // <Route path="panier" element={<Panier />} />
-          // <Route path="connexion" element={<Connexion />} 
-          }
+          <Route path="/articles" element={<Articles />}/>
+          <Route path="/produit/:name" element={<Detail />} />
+          {/* <Route path="panier" element={<Panier />} />
+          <Route path="connexion" element={<Connexion />}/> */}
         </Route>
       </Routes>
     </BrowserRouter>
