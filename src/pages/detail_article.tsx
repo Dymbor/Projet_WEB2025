@@ -2,9 +2,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import data from"../JSON/list_articles.json";
 import '../css/detail.css'
 
-
-
-
 function Detail() {
   const { name } = useParams();
   const item = data.find(p=>p.name === name);

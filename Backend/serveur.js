@@ -1,7 +1,11 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
+const cors = require('cors');
 const port = 3001;
+
+app.use(cors());
+app.use(express.json());
 
 app.get("/connection", (req, res) => {
   const User = req.query.username;
@@ -40,14 +44,34 @@ app.get("/", (req, res) => {
   res.send("Bienvenue sur le serveur backend !");
 });
 
-app.get("/articles", (req, res) => {
+app.get("/articles.json", (req, res) => {
   fs.readFile("../src/JSON/list_articles.json", "utf8", (err, data) => {
     if (err) {
       console.error("Erreur lors de la lecture de 'articles.json' :",err);
-      return;
+            return res.status(500).json({ error: 'Erreur lecture fichier' });
     }
-    const Articles= JSON.parse(data);
-    res.send(Articles);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(data);
+  });
+});
+
+app.delete("/suppression/:id", (req, res)=>{
+  const idToDelete = parseInt(req.params.id);
+
+  fs.readFile("../src/JSON/list_articles.json", "utf8", (err, jsonData) => {
+    if (err) {
+      return res.status(500).json({ error: 'Erreur lecture fichier' });
+    }
+
+    let produits = JSON.parse(jsonData);
+    const updated = produits.filter(p => p.id !== idToDelete);
+
+    fs.writeFile("../src/JSON/list_articles.json", JSON.stringify(updated, null, 2), err => {
+      if (err) {
+        return res.status(500).json({ error: 'Erreur écriture fichier' });
+      }
+      res.json({ message: `Produit ${idToDelete} supprimé` });
+    });
   });
 });
 
