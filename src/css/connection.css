@@ -1,0 +1,7 @@
+#FormConnection {
+    background-color: #F8F4E3;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
