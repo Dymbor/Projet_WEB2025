@@ -8,6 +8,7 @@ import Inscription from "./pages/connection";
 // import NoPage from "./NoPage";
 import Articles from "./pages/articles";
 import Detail from "./pages/detail_article.tsx";
+import Add from "./pages/add.jsx"
 // import Panier from "./pages/Panier";
 // import Connexion from "./pages/Connexion";
 import './css/index.css';
@@ -24,7 +25,9 @@ export default function App() {
           <Route path="*" element={<NoPage />} /> */}
           <Route path="/articles" element={<Articles />}/>
           <Route path="/produit/:name" element={<Detail />} />
-          {/* <Route path="panier" element={<Panier />} />*/ }
+          <Route path="/add" element={<Add />} />
+          {/* <Route path="panier" element={<Panier />} />
+          <Route path="connexion" element={<Connexion />}/> */}
         </Route>
       </Routes>
     </BrowserRouter>

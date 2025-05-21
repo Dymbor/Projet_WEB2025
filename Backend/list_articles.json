@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "img": "../images/pull.png",
+    "name": "Pull",
+    "description": "Pull noir",
+    "price": 29
+  },
+  {
+    "id": 2,
+    "img": "../images/fashion.png",
+    "name": "Combinaison",
+    "description": "Combinaison ample bleu",
+    "price": 29
+  },
+  {
+    "id": 3,
+    "img": "../images/jupe_noir.png",
+    "name": "Jupe noir",
+    "description": "Jupe noir avec chaines",
+    "price": 29
+  },
+  {
+    "id": 4,
+    "img": "../images/nuts.png",
+    "name": "Noix",
+    "description": "Noix 100% française",
+    "price": 29
+  },
+  {
+    "id": 5,
+    "img": "../images/popcorn.png",
+    "name": "PopCorn",
+    "description": "Pop corn au sucre",
+    "price": 29
+  },
+  {
+    "id": 6,
+    "img": "../images/pretzels.png",
+    "name": "Pretzels",
+    "description": "Pretzels salé",
+    "price": 29
+  },
+  {
+    "id": 1747833983253,
+    "name": "frere",
+    "price": "0",
+    "description": "Petit/Gentil/Utile ?",
+    "img": "../images/Gaetan.jpg"
+  },
+  {
+    "id": 1747835604201,
+    "name": "Envie de vivre",
+    "price": "2.50",
+    "description": "Envie de vivre pour ne pas avoir envie de mourir ?",
+    "img": "../images/paillette.jpg"
+  }
+]

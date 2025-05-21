@@ -1,0 +1,27 @@
+.detail{
+    background-color:#D5D0CD ;
+    overflow: hidden;
+}
+
+.fond{
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 1%;
+    background-color: #F8F4E3;
+    border-radius: 16px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    overflow: hidden;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+h2{
+    text-align: center;
+}
