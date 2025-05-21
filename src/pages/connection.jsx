@@ -53,12 +53,6 @@ function Inscription() {
       </section>
       <p>Pas de compte ?</p>
       <a href="/inscription">S'inscrire</a>
-      {user && (
-        <p>
-          Bienvenue {user.nom} (
-          {user.admin ? "admin" : "utilisateur"})
-        </p>
-      )}
     </div>
   );
 }
