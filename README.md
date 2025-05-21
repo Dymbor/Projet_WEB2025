@@ -1,5 +1,8 @@
 # Projet_WEB2025
-Projet de webdev de S2 
+Bievenue sur Alisen, projet de première année de:
+- Gwennaëlle Airo-Farulla (github: https://github.com/Edwin659)
+- Ethan Fontaine (github: https://github.com/Dymbor)
+- Doryan Lecoadou (github: https://github.com/Scoubyx)
 
 # Figma
 https://www.figma.com/design/aXInCeNVQ5t4znS2dLEhWc/Untitled?node-id=0-1&t=aHxBtYPU4KcCl8Ks-1
@@ -30,7 +33,7 @@ puis dans un nouveau terminal déplacer vous vers le dossier Backend
 Le serveur express est la pour faire la liaison entre react et le JSON pour pouvoir se connecter ajouter des articles etc...
 
 ### Fonctionnement
-Une fois démarrer le serveur est en écoute sur les adresse codé dans ```serveur.js``` 
+Une fois démarrer le serveur est en écoute sur les adresses codés dans ```serveur.js``` 
 Par exemple lorsqu'une requête est envoyé sur ```/connection``` le serveur renvoie sous la forme de JSON le fichier ```User.js```. 
 Pour ce faire on vas chercher le fichier grâce à:
 ```js
@@ -73,6 +76,27 @@ Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
 * mail: chaine de caractère adresse mail de l'utilisateur
 * mdp: chaine de caractère mot de passe de l'utilisateur
 * admin: booléen qui permet de connaitre les privilège de l'utilisateur
+
+### list_articles.json
+Fichier JSON qui contient la liste de tout les articles du site sous la forme
+```JSON
+[
+ {
+      "id":"number",
+      "img":"images/name.png",
+      "name": "name",
+      "description": "Description",
+      "price": number
+      
+    }
+]
+```
+
+* id: Identifiant de l'articles
+* img: lien public de l'images de l'articles
+* name: chaine de caractère du nom
+* description: chaine de caractère description de l'article
+* price: nombre pour le prx
 
 ## Module
 
