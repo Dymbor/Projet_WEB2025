@@ -1,6 +1,22 @@
-.Articles{
+.All{
     background-color:#D5D0CD ;
     overflow: hidden;
+    text-align: center;
+}
+
+.All>button{
+    background-color : #D9D9D9;
+    margin-top: 1%;
+    padding: 2%;
+    border-radius: 16px;
+}
+
+.All>button:active {
+    background-color: #dadada;
+    border-width: 0 0 4px;
+}
+
+.Articles{
     display: flex;
     flex-wrap: wrap;
 }
@@ -19,6 +35,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.test>button{
+    background-color : #D9D9D9;
+    padding: 2%;
+    border-radius: 16px;
 }
 
 img{
