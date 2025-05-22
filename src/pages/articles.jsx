@@ -1,13 +1,12 @@
 import '../css/articles.css';
 import { useEffect, useState } from "react";
-import data from"../JSON/list_articles.json";
 import {useNavigate } from 'react-router-dom';
 
 const Articles = () => {
   const [items, setItems]=useState([]);
 
   useEffect(()=> {
-    fetch('http://localhost:3001/articles.json')
+    fetch('http://localhost:3001/articles')
       .then(res => res.json())
       .then(data => setItems(data));
   },[]);
@@ -29,20 +28,23 @@ const Articles = () => {
   const navigate=useNavigate();
 
   return(
-    <div className='Articles'>
-      {items.map((item) => (
-        <div key={item.id} className="mini">
-         <div className="test">
-            <img src={item.img}></img>
-            <h1>{item.name}</h1>
-            <h2>{item.price}€</h2>
-            <p>{item.description}</p>
-            <button onClick={()=> navigate(`/produit/${item.name}`)}>Voir plus</button>
-            <button>Acheter</button>
-            <button onClick={() => supprimerProduit(item.id)}>Supprimer</button>
-            </div>
-        </div>
-      ))}
+    <div className='All'>
+      <button onClick={()=> navigate('/add')}>Ajouter un article</button>
+      <div className='Articles'>
+        {items.map((item) => (
+          <div key={item.id} className="mini">
+            <div className="test">
+                <img src={item.img}></img>
+                <h1>{item.name}</h1>
+                <h2>{item.price}€</h2>
+                <p>{item.description}</p>
+                <button onClick={()=> navigate(`/produit/${item.name}`)}>Voir plus</button>
+                <button>Acheter</button>
+                <button onClick={() => supprimerProduit(item.id)}>Supprimer</button>
+              </div>
+          </div>
+        ))}
+      </div>
     </div>
 );
 }
