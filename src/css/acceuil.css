@@ -10,15 +10,21 @@
 }
 
 .clothes {
-    width:100%;
     border-radius: 10%;
     margin-left: 2%;
-    border-color:#5E574D;
-    border-bottom-width: 100px;
-    border-right-width: 100px;
 }
 
 .text{
     margin-left: 2%;
     margin-right: 2%;
+}
+
+@media screen and (max-width:700px) {
+    .Article{
+        flex-direction: column;
+    }
+
+    .clothes{
+        margin: 0;
+    }
 }
