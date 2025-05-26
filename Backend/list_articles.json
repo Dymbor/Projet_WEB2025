@@ -54,5 +54,12 @@
     "price": "2.50",
     "description": "Envie de vivre pour ne pas avoir envie de mourir ?",
     "img": "../images/paillette.jpg"
+  },
+  {
+    "id": 1747836478748,
+    "img": "../images/user.svg",
+    "name": "sananes",
+    "description": "pas utile mais présent",
+    "price": "0"
   }
 ]
