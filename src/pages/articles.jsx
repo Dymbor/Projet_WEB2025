@@ -34,7 +34,7 @@ const Articles = () => {
         {items.map((item) => (
           <div key={item.id} className="mini">
             <div className="test">
-                <img src={item.img}></img>
+                <img src={item.img} className='img'></img>
                 <h1>{item.name}</h1>
                 <h2>{item.price}€</h2>
                 <p>{item.description}</p>
