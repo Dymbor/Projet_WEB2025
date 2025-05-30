@@ -11,7 +11,7 @@ const Layout = () => {
                 <div className='list-link'>
                     <Link to='/'>Home</Link>
                     <Link to='/articles'>Achat</Link>
-                    <Link to="/">Panier</Link>
+                    <Link to="/panier">Panier</Link>
                     <Link to="/connection">Se connecter</Link>
                 </div>
             </header>
