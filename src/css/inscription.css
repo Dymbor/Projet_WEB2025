@@ -34,9 +34,10 @@ label{
 
 button{
     padding: 10px 20px;
-    background-color: #D9D9D9;
+    background-color: #D5D0CD;
     color: black;
-    border: none;
+    border: solid;
+    border-color: #9A998C;
     border-radius: 15px;
     cursor: pointer;
     display: block;

@@ -58,7 +58,7 @@ function Connection() {
             ) : (
               <h2> Niveau : Utilisateur</h2>
             )}
-            <button
+            <button className="button"
               onClick={() => {
                 localStorage.removeItem("utilisateur");
                 setUtilisateur(null);
@@ -91,7 +91,7 @@ function Connection() {
               />
             </label>
 
-            <button onClick={appelServeurConnection}>Continuer</button>
+            <button className="button" onClick={appelServeurConnection}>Continuer</button>
             {erreur ? <p style={{ color: "red" }}>{erreur}</p> : null}
             <hr />
             <p>Pas de compte ?</p>
