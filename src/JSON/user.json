@@ -1,26 +1,26 @@
 {
-    "Thaen":{
-        "nom":"Ethan",
-        "mail":"ethan.fontaine@isen.yncrea.fr",
-        "mdp":"mdpEthan",
-        "admin":true
-    },
-    "Ed":{
-        "nom":"Gwen",
-        "mail":"gwennaelle.airo-farulla@isen.yncrea.fr",
-        "mdp":"mdpGwen",
-        "admin":true
-    },
-    "Scoubyx":{
-        "nom":"Doryan",
-        "mail":"doryan.le-coadou@isen.yncrea.fr",
-        "mdp":"mdpDoryan",
-        "admin":true
-    },
-    "Test":{
-        "nom":"Test",
-        "mail":"ceciestun@test.com",
-        "mdp":"azerty",
-        "admin":false
-    }
+  "Thaen": {
+    "nom": "Ethan",
+    "mail": "ethan.fontaine@isen.yncrea.fr",
+    "mdp": "mdpEthan",
+    "admin": true
+  },
+  "Ed": {
+    "nom": "Gwen",
+    "mail": "gwennaelle.airo-farulla@isen.yncrea.fr",
+    "mdp": "mdpGwen",
+    "admin": true
+  },
+  "Scoubyx": {
+    "nom": "Doryan",
+    "mail": "doryan.le-coadou@isen.yncrea.fr",
+    "mdp": "mdpDoryan",
+    "admin": true
+  },
+  "Test": {
+    "nom": "Test",
+    "mail": "ceciestun@test.com",
+    "mdp": "azerty",
+    "admin": false
+  }
 }

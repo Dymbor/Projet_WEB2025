@@ -11,13 +11,13 @@ app.use(express.json());
 
 // Configuration Multer pour stocker les images dans ../public/images
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "../public/images"));
-    },
-    filename: (req, file, cb) =>{
-        const uniqueName = file.originalname;
-        cb(null, uniqueName);
-    },
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../public/images"));
+  },
+  filename: (req, file, cb) => {
+    const uniqueName = file.originalname;
+    cb(null, uniqueName);
+  },
 });
 const upload = multer({ storage });
 // Chemin du fichier JSON
@@ -56,6 +56,43 @@ app.get("/connection", (req, res) => {
   });
 });
 
+app.post("/inscription", (req, res) => {
+  const { username, mail, password } = req.body;
+
+  fs.readFile("../src/JSON/user.json", "utf8", (err, data) => {
+    if (err) {
+      console.error("Erreur lors de la lecture de 'user.json' :", err);
+      return res.status(500).send("Erreur lors de la lecture de fichier");
+    }
+
+    const users = JSON.parse(data);
+
+    if (users[username]) {
+      // on vérifie que le nom d'utilisateur n'as jamais était pris
+      return res.status(409).send("Nom d'utilisateur déjà existant");
+    }
+
+    users[username] = {
+      nom: username,
+      mail: mail,
+      mdp: password,
+      admin: false,
+    };
+
+    fs.writeFile(
+      "../src/JSON/user.json",
+      JSON.stringify(users, null, 2),
+      (err) => {
+        if (err) {
+          console.error("Erreur lors de l'écriture dans user.json :", err);
+          return res.status(500).send("Erreur lors de la création du compte");
+        }
+        res.status(201).send("Création du compte réussie");
+      }
+    );
+  });
+});
+
 app.get("/", (req, res) => {
   res.send("Bienvenue sur le serveur backend !");
 });
@@ -64,31 +101,32 @@ app.get("/", (req, res) => {
 app.get("/articles", (req, res) => {
   const jsonPath = path.join(__dirname, "list_articles.json");
   if (fs.existsSync(jsonPath)) {
-      const data = fs.readFileSync(jsonPath);
-      res.json(JSON.parse(data));
-    }else{
-      console.error("Erreur lors de la lecture de 'articles.json'");
-      return res.status(500).json({ error: 'Erreur lecture fichier' });
-    }
+    const data = fs.readFileSync(jsonPath);
+    res.json(JSON.parse(data));
+  } else {
+    console.error("Erreur lors de la lecture de 'articles.json'");
+    return res.status(500).json({ error: "Erreur lecture fichier" });
+  }
 });
 
 //Delete : supprimer les articles
-app.delete("/suppression/:id", (req, res) => { //Pouvoir supprimer les Articles
+app.delete("/suppression/:id", (req, res) => {
+  //Pouvoir supprimer les Articles
   const idToDelete = parseInt(req.params.id);
 
   const jsonPath = path.join(__dirname, "list_articles.json");
 
   fs.readFile(jsonPath, "utf8", (err, jsonData) => {
     if (err) {
-      return res.status(500).json({ error: 'Erreur lecture fichier' });
+      return res.status(500).json({ error: "Erreur lecture fichier" });
     }
 
     let produits = JSON.parse(jsonData);
-    const updated = produits.filter(p => p.id !== idToDelete);
+    const updated = produits.filter((p) => p.id !== idToDelete);
 
-    fs.writeFile(jsonPath, JSON.stringify(updated, null, 2), err => {
+    fs.writeFile(jsonPath, JSON.stringify(updated, null, 2), (err) => {
       if (err) {
-        return res.status(500).json({ error: 'Erreur écriture fichier' });
+        return res.status(500).json({ error: "Erreur écriture fichier" });
       }
       res.json({ message: `Produit ${idToDelete} supprimé` });
     });
