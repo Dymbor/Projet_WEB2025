@@ -1,21 +1,25 @@
-import '../css/articles.css';
+import "../css/articles.css";
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Articles = () => {
   const [items, setItems] = useState([]);
   const [panier, setPanier] = useState([]);
+  const [utilisateur, setUtilisateur] = useState(() => {
+    const UtilisateurConnecte = localStorage.getItem("utilisateur");
+    return UtilisateurConnecte ? JSON.parse(UtilisateurConnecte) : null;
+  });
 
   useEffect(() => {
-    fetch('http://localhost:3001/articles')
-      .then(res => res.json())
-      .then(data => setItems(data));
+    fetch("http://localhost:3001/articles")
+      .then((res) => res.json())
+      .then((data) => setItems(data));
   }, []);
 
   const supprimerProduit = async (id) => {
     try {
       const res = await fetch(`http://localhost:3001/suppression/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
 
       const data = await res.json();
@@ -28,49 +32,55 @@ const Articles = () => {
 
   const ajouterPanier = (item) => {
     try {
-        const panSauv = localStorage.getItem("panier");
-        if (panSauv) {
-            const panier = JSON.parse(panSauv);
-            panier.push(item);
-            localStorage.setItem("panier", JSON.stringify(panier));
-            setPanier(panier);
-            console.log("ajout");
-        } else {
-            const nouveauPanier = [item];
-            localStorage.setItem("panier", JSON.stringify(nouveauPanier));
-            setPanier(nouveauPanier);
-            console.log("ajout+nouveau");
-        }
-
+      const panSauv = localStorage.getItem("panier");
+      if (panSauv) {
+        const panier = JSON.parse(panSauv);
+        panier.push(item);
+        localStorage.setItem("panier", JSON.stringify(panier));
+        setPanier(panier);
+        console.log("ajout");
+      } else {
+        const nouveauPanier = [item];
+        localStorage.setItem("panier", JSON.stringify(nouveauPanier));
+        setPanier(nouveauPanier);
+        console.log("ajout+nouveau");
+      }
     } catch (error) {
-        console.error("Erreur lors du chargement du panier :", error);
+      console.error("Erreur lors du chargement du panier :", error);
     }
     alert("Produit ajouté au panier");
-};
-
+  };
 
   const navigate = useNavigate();
 
   return (
-    <div className='All'>
-      <button onClick={() => navigate('/add')}>Ajouter un article</button>
-      <div className='Articles'>
+    <div className="All">
+      {utilisateur && Object.values(utilisateur)[0]?.admin ? (
+        <button onClick={() => navigate("/add")}>Ajouter un article</button>
+      ) : null}
+      <div className="Articles">
         {items.map((item) => (
           <div key={item.id} className="mini">
             <div className="test">
-              <img src={item.img} className='img'></img>
+              <img src={item.img} className="img"></img>
               <h1>{item.name}</h1>
               <h2>{item.price}€</h2>
               <p>{item.description}</p>
-              <button onClick={() => navigate(`/produit/${item.name}`)}>Voir plus</button>
+              <button onClick={() => navigate(`/produit/${item.name}`)}>
+                Voir plus
+              </button>
               <button onClick={() => ajouterPanier(item)}>Acheter</button>
-              <button onClick={() => supprimerProduit(item.id)}>Supprimer</button>
+              {utilisateur && Object.values(utilisateur)[0]?.admin ? (
+                <button onClick={() => supprimerProduit(item.id)}>
+                  Supprimer
+                </button>
+              ) : null}
             </div>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default Articles;
