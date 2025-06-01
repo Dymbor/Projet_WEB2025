@@ -74,7 +74,7 @@ function Detail() {
         <div className="detail">
             <div className="fond">
                 <div className="retour">
-                    <img src={item.img}></img>
+                    <img className="image" src={item.img}></img>
                     <div className="Tout">
                         <h1>{name}</h1>
                         <h3>{item.price}€</h3>
