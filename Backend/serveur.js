@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const app = express();
-const multer = require("multer");
-const path = require("path");
+const multer = require('multer');
+const path = require('path');
 const port = 3001;
 
 app.use(cors());

@@ -47,4 +47,36 @@ img{
     height: 200px;
     width: 200px;
     object-fit: cover;
+.img{
+    height: 150px;
+}
+
+@media screen and (max-width:1912px) and (min-width:1538px) {
+    .Articles{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:1460px) and (min-width:1098px) {
+    .Articles{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:1071px) and (min-width:787px) {
+    .Articles{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:750px) and (min-width:475px) {
+    .Articles{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:457px) and (min-width:261px) {
+    .Articles{
+        justify-content: center;
+    }
 }

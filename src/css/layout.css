@@ -43,7 +43,6 @@ header {
 
 .list{
     display: flex;
-    align-items: center;
 }
 
 .list>p {
