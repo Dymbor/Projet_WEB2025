@@ -1,0 +1,27 @@
+.Panier {
+    background-color: #D5D0CD;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all {
+    display: flex;
+    flex-direction: row;
+}
+
+.Total {
+    border-style: inset;
+    border-color: black;
+    margin: 1%;
+    border-radius: 5%;
+    padding: 2%;
+    width: 200px;
+}
+
+@media screen and (max-width:477px) {
+    .all {
+        flex-direction: column;
+    }
+}
