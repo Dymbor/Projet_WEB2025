@@ -12,12 +12,14 @@
 }
 
 .Total {
-    border-style: inset;
-    border-color: black;
+    border-style: solid ;
+    border-color: #9A998C;
     margin: 1%;
     border-radius: 5%;
-    padding: 2%;
     width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (max-width:477px) {

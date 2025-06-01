@@ -80,7 +80,7 @@ function Inscription() {
           />
         </label>
 
-        <button onClick={appelServeurInscription}>Continuer</button>
+        <button className="button" onClick={appelServeurInscription}>Continuer</button>
         {erreur ? <p style={{ color: "red" }}>{erreur}</p> : null}
         <hr />
         <p>Déja inscrit ?</p>

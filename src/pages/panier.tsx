@@ -1,5 +1,5 @@
 import "../css/panier.css"
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function Panier() {
@@ -20,13 +20,14 @@ function Panier() {
     }, []);
 
     const supprimerArticle = (id) => {
-        const newPanier = panier.filter((p) => p.id != id);
+        const newPanier = panier.filter((p) => p.id !== id);
         setPanier(newPanier);
         localStorage.setItem("panier", JSON.stringify(newPanier));
     }
 
-    const supprimerPanier = () => {
-        localStorage.clear();
+    const supprimerPanier1 = () => {
+        localStorage.removeItem("panier");
+        console.log("je supprime tout");
         setPanier([]);
     }
 
@@ -34,7 +35,6 @@ function Panier() {
         const prix = parseFloat(item.price);
         return acc + (isNaN(prix) ? 0 : prix);
     }, 0);
-
 
     return (
         <div className="Panier">
@@ -55,7 +55,7 @@ function Panier() {
                                 ))}
                             </ul>
                         )}
-                        <button onClick={() => supprimerPanier}>Supprimer tout le panier</button>
+                        <button onClick={()=>supprimerPanier1()}>Supprimer tout le panier</button>
                     </div>
                 </div>
                 <div className="Total">
