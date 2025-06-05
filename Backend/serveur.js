@@ -116,6 +116,7 @@ app.delete("/suppression/:id", (req, res) => {
 
   const jsonPath = path.join(__dirname, "list_articles.json");
 
+  //Lis le JSON
   fs.readFile(jsonPath, "utf8", (err, jsonData) => {
     if (err) {
       return res.status(500).json({ error: "Erreur lecture fichier" });
@@ -124,6 +125,7 @@ app.delete("/suppression/:id", (req, res) => {
     let produits = JSON.parse(jsonData);
     const updated = produits.filter((p) => p.id !== idToDelete);
 
+    //Ecrit dans le JSON
     fs.writeFile(jsonPath, JSON.stringify(updated, null, 2), (err) => {
       if (err) {
         return res.status(500).json({ error: "Erreur écriture fichier" });
@@ -149,6 +151,7 @@ app.post("/articles", upload.single("image"), (req, res) => {
     articles = JSON.parse(data);
   }
 
+  //Creation du nouvelle article
   const newArticle = {
     id: Date.now(),
     img: `../images/${image.filename}`,

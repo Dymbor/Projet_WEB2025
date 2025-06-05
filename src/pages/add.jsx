@@ -2,6 +2,7 @@ import '../css/add.css';
 import { useEffect, useState } from "react";
 
 const Add = () => {
+    //Initialise le forme
     const [formData, setFormData] = useState({
         name: "",
         price: "",
@@ -9,9 +10,10 @@ const Add = () => {
         imageFile: null,
     });
 
-    // On stocke les produits dans un tableau JSON (simulateur)
+    //Stocke les produits dans un tableau JSON (simulation)
     const [products, setProducts] = useState([]);
 
+    //Prend les informations des articles dans le serveur
     useEffect(() => {
         fetch('http://localhost:3001/articles')
             .then(res => res.json())
@@ -19,6 +21,7 @@ const Add = () => {
             .catch(err => console.error("Erreur chargement articles :", err));
     }, []);
 
+    //Détecte les changements dans le form
     const handleChange = (e) => {
         const { name, value, files } = e.target;
         if (name === "image") {
@@ -31,20 +34,25 @@ const Add = () => {
         }
     };
 
+    //Gère la soumission du forms et l'envoie au serveur
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
+        //Vérifie si tout les champs sont rempli
         if (!formData.name || !formData.price || !formData.description) {
             alert("Merci de remplir tous les champs");
             return;
         }
 
+        //Ajoute les éléments du forms dans un nouveau form
         const formDataToSend = new FormData();
         formDataToSend.append("name", formData.name);
         formDataToSend.append("price", formData.price);
         formDataToSend.append("description", formData.description);
         formDataToSend.append("image", formData.imageFile);
 
+        //Ajoute les informations du nouveau form grâce au serveur
         try {
             const response = await fetch("http://localhost:3001/articles", {
                 method: "POST",
@@ -64,6 +72,8 @@ const Add = () => {
             console.error("Erreur :", err);
         }
     };
+
+    //Affiche la page Ajouter
     return (
         <div className='Admin'>
             <div className='detail'>
