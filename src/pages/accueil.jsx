@@ -1,10 +1,15 @@
 import "../css/acceuil.css";
 import Clothes from "./clothes.png";
+
+//Recherche du nom de l'utilisateur dans le localStorage
 const utilisateur = JSON.parse(localStorage.getItem("utilisateur"));
 const nom = utilisateur && Object.values(utilisateur)[0]?.nom;
+
+//Affiche l'acceuil
 const Acceuil = () => {
   return (
     <div className="Acceuil">
+      {/* Affiche le nom de l'utilisateur s'il est connecté */}
       <h2>Bienvenue {nom} !</h2>
       <div className="Article">
         <img className="clothes" src={Clothes} alt="Clothes" />

@@ -6,6 +6,7 @@ function Panier() {
     const navigate = useNavigate();
     const [panier, setPanier] = useState([]);
 
+    //Accède au localStorage du panier et le charge
     useEffect(() => {
         try {
             const panSauv = localStorage.getItem("panier");
@@ -19,23 +20,27 @@ function Panier() {
         }
     }, []);
 
+    //Supprime un article du localStorage du panier
     const supprimerArticle = (id) => {
         const newPanier = panier.filter((p) => p.id !== id);
         setPanier(newPanier);
         localStorage.setItem("panier", JSON.stringify(newPanier));
     }
 
+    //Supprime le localStorage du panier
     const supprimerPanier1 = () => {
         localStorage.removeItem("panier");
         console.log("je supprime tout");
         setPanier([]);
     }
 
+    //Calcul le prix total des éléments du panier
     const total = panier.reduce((acc, item) => {
         const prix = parseFloat(item.price);
         return acc + (isNaN(prix) ? 0 : prix);
     }, 0);
 
+    //Affiche la page panier
     return (
         <div className="Panier">
             <h1>Panier</h1>
@@ -55,7 +60,7 @@ function Panier() {
                                 ))}
                             </ul>
                         )}
-                        <button onClick={()=>supprimerPanier1()}>Supprimer tout le panier</button>
+                        <button onClick={() => supprimerPanier1()}>Supprimer tout le panier</button>
                     </div>
                 </div>
                 <div className="Total">
@@ -68,7 +73,6 @@ function Panier() {
         </div >
 
     );
-
 
 }
 export default Panier;
