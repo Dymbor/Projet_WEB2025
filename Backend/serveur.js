@@ -121,7 +121,7 @@ app.get("/articles", (req, res) => {
   }
 });
 
-//Delete : supprimer les articles
+//Delete : supprimer les articles 
 app.delete("/suppression/:id", (req, res) => {
   //Pouvoir supprimer les Articles
   const idToDelete = parseInt(req.params.id);

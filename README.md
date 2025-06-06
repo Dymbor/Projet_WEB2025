@@ -87,7 +87,7 @@ Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
         "mail":"adrresse@mail.utilisateur",
         "mdp":"motDePasse",
         "admin":true
-    },
+    }, 
 }
 ```
 
