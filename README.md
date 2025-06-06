@@ -102,7 +102,7 @@ Fichier JSON qui contient la liste de tout les articles du site sous la forme
 ```JSON
 [
  {
-      "id":"number",
+      "id": number,
       "img":"images/name.png",
       "name": "name",
       "description": "Description",
