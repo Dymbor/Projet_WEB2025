@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import "../css/inscription.css";
 import { useNavigate } from "react-router-dom";
 
