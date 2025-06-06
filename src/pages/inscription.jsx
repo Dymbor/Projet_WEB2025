@@ -3,29 +3,25 @@ import "../css/inscription.css";
 import { useNavigate } from "react-router-dom";
 
 function Inscription() {
+  //définition des useState
   const [user, setUser] = useState("");
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-  const [erreur, setErreur] = useState(""); // pour afficher les erreurs
+  const [erreur, setErreur] = useState("");
   const navigate = useNavigate();
 
   const appelServeurInscription = () => {
-    console.log("Bouton clique");
-    console.error("Lol non je rigole ca va tkt");
-    console.warn("Attention à me dev quand meme");
-    console.log(user);
-    console.log(mail);
-    console.log(password);
-
+    
     if (!user || !mail || !password) {
-      alert("Attention tout les champs sont obligatoire");
+      alert("Attention tous les champs sont obligatoires");
       return;
     }
 
+    //On envoie les donnée en POST au serveur backend
     fetch("http://localhost:3001/inscription", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+      headers: { "Content-Type": "application/json" }, //permet d'indiquer au serveur le type de donnée envoyer
+      body: JSON.stringify({  //permet d'indiquer au seveur le format de donnée envoyé
         username: user,
         mail: mail,
         password: password,
@@ -33,7 +29,7 @@ function Inscription() {
     })
       .then((data) => {
         if (data.status === 201) {
-          setErreur(""); // pas d'erreur
+          setErreur(""); //on efface un eventuel message d'erreur qui aurait pus etre afficher
           navigate("/connection");
         } else if (data.status === 409) {
           setErreur("Nom d'utilisateur non disponible.");
@@ -80,7 +76,10 @@ function Inscription() {
           />
         </label>
 
-        <button className="button" onClick={appelServeurInscription}>Continuer</button>
+        <button className="button" onClick={appelServeurInscription}>
+          Continuer
+        </button>
+        {/* Permet d'afficher un message d'erreur en cas d'échec */}
         {erreur ? <p style={{ color: "red" }}>{erreur}</p> : null}
         <hr />
         <p>Déja inscrit ?</p>

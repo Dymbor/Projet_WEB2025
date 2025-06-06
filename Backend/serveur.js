@@ -20,13 +20,17 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
-// Chemin du fichier JSON
+
+// Chemin du fichier JSON d'article
 const jsonPath = path.join(__dirname, "list_articles.json");
 
+// Adresse appeler lors d'une tentative de connection
 app.get("/connection", (req, res) => {
+  //constante pour lire les donnée envoyer dans l'adresse
   const User = req.query.username;
   const Password = req.query.password;
 
+  // On accède si possible au JSON qui contient les utilisateur, sinon on renvoie l'erreur
   fs.readFile("../src/JSON/user.json", "utf8", (err, data) => {
     if (err) {
       console.error("Erreur lors de la lecture de 'user.json' :", err);
@@ -44,21 +48,25 @@ app.get("/connection", (req, res) => {
       return;
     }
 
+    // on met dans une variable les donnée à renvoyer pour éviter d'envoyer le mot de passe 
     const infoAEnvoyer = {
       nom: utilisateur.nom,
       mail: utilisateur.mail,
       admin: utilisateur.admin,
     };
 
+    //renvoie d'un objet json au frontend
     res.status(200).json({
       [User]: infoAEnvoyer,
     });
   });
 });
 
+//POST : ajout d'un utilisateur au JSON
 app.post("/inscription", (req, res) => {
   const { username, mail, password } = req.body;
 
+  // On accède si possible au JSON qui contient les utilisateur
   fs.readFile("../src/JSON/user.json", "utf8", (err, data) => {
     if (err) {
       console.error("Erreur lors de la lecture de 'user.json' :", err);
@@ -72,6 +80,7 @@ app.post("/inscription", (req, res) => {
       return res.status(409).send("Nom d'utilisateur déjà existant");
     }
 
+    //on crée un objet user de la même forme que ceux dans user.json
     users[username] = {
       nom: username,
       mail: mail,
@@ -79,6 +88,8 @@ app.post("/inscription", (req, res) => {
       admin: false,
     };
 
+
+    //On écrit si possible le nouvel utilisateur dans le json
     fs.writeFile(
       "../src/JSON/user.json",
       JSON.stringify(users, null, 2),
@@ -93,6 +104,7 @@ app.post("/inscription", (req, res) => {
   });
 });
 
+//Adresse par défaut du backend
 app.get("/", (req, res) => {
   res.send("Bienvenue sur le serveur backend !");
 });
@@ -165,6 +177,7 @@ app.post("/articles", upload.single("image"), (req, res) => {
   res.status(201).json({ message: "Article ajouté", article: newArticle });
 });
 
+//Permet de savoir l'adresse du serveur lors de l'éxécution de la commande node serveur.js
 app.listen(port, () => {
   console.log(`Backend lancé sur http://localhost:${port}`);
 });
