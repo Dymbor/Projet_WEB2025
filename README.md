@@ -1,5 +1,5 @@
 # Projet_WEB2025
-![Logo de Alisen](/pages/logo_Alisen.png)
+![Logo de Alisen](src/pages/logo_Alisen.png)
 
 Bievenue sur Alisen, projet de première année de:
 - [Gwennaëlle Airo-Farulla](https://github.com/Edwin659)
