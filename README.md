@@ -1,28 +1,39 @@
 # Projet_WEB2025
+![Logo de Alisen](src/pages/logo_Alisen.png)
+
 Bievenue sur Alisen, projet de première année de:
-- Gwennaëlle Airo-Farulla (github: https://github.com/Edwin659)
-- Ethan Fontaine (github: https://github.com/Dymbor)
-- Doryan Lecoadou (github: https://github.com/Scoubyx)
+- [Gwennaëlle Airo-Farulla](https://github.com/Edwin659)
+- [Ethan Fontaine](https://github.com/Dymbor)
+- [Doryan Lecoadou](https://github.com/Scoubyx)
 
-# Figma
-https://www.figma.com/design/aXInCeNVQ5t4znS2dLEhWc/Untitled?node-id=0-1&t=aHxBtYPU4KcCl8Ks-1
+# Document
+[Figma](https://www.figma.com/design/aXInCeNVQ5t4znS2dLEhWc/Untitled?node-id=0-1&t=aHxBtYPU4KcCl8Ks-1)
 
-# Cadrage du Projet
-https://yncrea-my.sharepoint.com/:w:/g/personal/ethan_fontaine_isen_yncrea_fr/Ef3wrTgiG2NNuIEh2e0PmLcBNZkhPoOmr-9z3i-zpW7rYA?e=mxdZuV
+[Cadrage du Projet](https://yncrea-my.sharepoint.com/:w:/g/personal/ethan_fontaine_isen_yncrea_fr/Ef3wrTgiG2NNuIEh2e0PmLcBNZkhPoOmr-9z3i-zpW7rYA?e=mxdZuV)
 
-# Diagramme de Gant
-https://1drv.ms/x/c/443525efde2adbbf/EZBDeCgiNR9IvcsxvIdh1LUBxEThRAA_Xj5BP0wAU7vOjA?e=fRjnuV
+[Diagramme de Gant](https://1drv.ms/x/c/443525efde2adbbf/EZBDeCgiNR9IvcsxvIdh1LUBxEThRAA_Xj5BP0wAU7vOjA?e=fRjnuV)
+
+# Avancé
+
+- [X] Mettre en place l'arboressence
+- [X] Préparer le JSON
+- [X] Faire les pages de frontend
+- [X] Mettre en place une gestion d'image
+- [X] Préparer le module TS
+- [X] Mettre en place un système de connection/inscription
+- [X] Faire la différence entre user et admin
+- [X] Mettre en place l'API backend 
+- [X] Lier l'API au Frontend
+- [X] Commenter le code 
 
 # Installation
 Avant de pouvoir lancer le site il vous faut exéctuer plusieur commande:
-* ```npm i -D react-router-dom```
-* ```npm i -D react-router-dom@latest```
 * ```npm install```
 
-Une fois ses trois commande exéctué vous êtes prêt a lancer le site:
+Une fois les modules instalée vous êtes prêt a lancer le site:
 * ```npm start```
 
-puis dans un nouveau terminal déplacer vous vers le dossier Backend 
+Puis dans un nouveau terminal déplacer vous vers le dossier Backend 
 * ```cd Backend```
 * ```node serveur.js```
 
@@ -30,7 +41,7 @@ puis dans un nouveau terminal déplacer vous vers le dossier Backend
 
 ## Serveur express
 ### Utilité
-Le serveur express est la pour faire la liaison entre react et le JSON pour pouvoir se connecter ajouter des articles etc...
+Le serveur express fait office d'API backend au site pour pouvoir modifier les JSON et envoyer des donnée utiles
 
 ### Fonctionnement
 Une fois démarrer le serveur est en écoute sur les adresses codés dans ```serveur.js``` 
@@ -45,16 +56,25 @@ const Variable= JSON.parse(data);
 ```
 
 ### Liste actuelle des accès au serveur
-* ```/``` : chemin par défaut, envoie juste le texte "Bienvenue sur le serveur backend
+* ```app.get("/")``` : chemin par défaut, envoie juste le texte "Bienvenue sur le serveur backend
 * ```/connection?username=...&password=...``` : renvoie une tentative de connection à l'utilisateur 'username' et renvoie un code, suivi du fichier JSON de l'utilisateur s'il existe et que le mot de passe est correct
+* `/inscription` :  rajoute s'il n'existe pas déja l'utilisateur envoyer par la page inscription dans le `user.json`
+* `/articles` : renvoie la liste d'article sous forme d'objet JSON
+* `/supression/:id` : tente de supprimer l'article dont l'id est précisé
+
+> [!NOTE]
+> Le chemin `articles` est accesible de deux méthode différente pour pouvoir aussi rajouter des articles
 
 ### Code de réponse du serveur
-- `500` : Echec de lecture du fichier
+- `500` : Echec de lecture de d'ecriture du fichier
 - `404` : Utilisateur inconnue
 - `401` : Mot de passe incorrect
+- `409` : Utilisateur déja existant
+- `400` : Des donnée nécéssaire sont manquante
 - `200` : Connection réussi
 
-Dans le cas de l'envoie d'un code `200` le serveur enverra aussi sous forme de JSON le fichier demander
+> [!NOTE]
+> Dans le cas de l'envoie d'un code `200` le serveur enverra aussi sous forme de JSON le fichier demander
 
 
 ## JSON 
@@ -66,8 +86,8 @@ Fichier JSON qui contient la liste de tout les utilisateur du site sous la forme
         "nom":"nom",
         "mail":"adrresse@mail.utilisateur",
         "mdp":"motDePasse",
-        "admin":true // False 
-    },
+        "admin":true
+    }, 
 }
 ```
 
@@ -82,7 +102,7 @@ Fichier JSON qui contient la liste de tout les articles du site sous la forme
 ```JSON
 [
  {
-      "id":"number",
+      "id": number,
       "img":"images/name.png",
       "name": "name",
       "description": "Description",
@@ -100,4 +120,29 @@ Fichier JSON qui contient la liste de tout les articles du site sous la forme
 
 ## Module
 
-### Inscription.js
+### Inscription.jsx
+Cette page est un formulaire qui permet aux utilisateurs de crée leur compte sur le site
+
+### Connection.jsx
+Cette page est un formulaire qui permet aux utilisateurs de se connecter
+
+> [!NOTE]
+> Une fois un utilisateur connecté la page affiche son nom et statut (user/admin)
+
+### Articles.jsx
+Cette page permet d'afficher tout les articles disponible dans le `list_articles.json`
+
+### Accueil.jsx
+Cette page est la page d'index et est celle qui se charge par défaut lorsque le site est lancé
+
+### Add.jsx
+Cette page permet au admin de rajouter un produit sur le site par un formulaire avec la possibilité d'envoyer une image au serveur
+
+### Detail_article.tsx
+Cette page est généré dynamiquement à partir des objets JSON envoyer par le serveur et affiche des détails sur un articles
+
+### Layout.jsx
+Permet de mettre le layout général d'une page (header et footer)
+
+### Panier.tsx
+Cette page affiche le panier stocker dans le `localStorage`
