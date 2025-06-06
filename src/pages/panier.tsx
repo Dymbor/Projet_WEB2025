@@ -35,10 +35,12 @@ function Panier() {
     }
 
     //Calcul le prix total des éléments du panier
-    const total = panier.reduce((acc, item) => {
+    const totalFloat = panier.reduce((acc, item) => {
         const prix = parseFloat(item.price);
         return acc + (isNaN(prix) ? 0 : prix);
     }, 0);
+
+    const total =(totalFloat).toFixed(2);
 
     //Affiche la page panier
     return (

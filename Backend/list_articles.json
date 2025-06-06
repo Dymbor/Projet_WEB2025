@@ -4,14 +4,14 @@
     "img": "../images/pull.png",
     "name": "Pull",
     "description": "Pull noir",
-    "price": 29
+    "price": 60
   },
   {
     "id": 2,
     "img": "../images/fashion.png",
     "name": "Combinaison",
     "description": "Combinaison ample bleu",
-    "price": 29
+    "price": 15
   },
   {
     "id": 3,
@@ -25,20 +25,20 @@
     "img": "../images/nuts.png",
     "name": "Noix",
     "description": "Noix 100% française",
-    "price": 29
+    "price": 8
   },
   {
     "id": 5,
     "img": "../images/popcorn.png",
     "name": "PopCorn",
     "description": "Pop corn au sucre",
-    "price": 29
+    "price": 5
   },
   {
     "id": 6,
     "img": "../images/pretzels.png",
-    "name": "Pretzels",
-    "description": "Pretzels salé",
-    "price": 29
+    "name": "Bretzels",
+    "description": "8 kg de bretzels salé",
+    "price": 30.99
   }
 ]
